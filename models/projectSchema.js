@@ -17,7 +17,10 @@ const ProjectSchema = new mongoose.Schema(
     galleryAfter: {
       type: Array,
     },
-    about: {
+    aboutLeft: {
+      type: String,
+    },
+    aboutRight: {
       type: String,
     },
     category: {
@@ -30,20 +33,19 @@ const ProjectSchema = new mongoose.Schema(
       enum: ["active", "deactive"],
       default: "active",
     },
-    projectInfo: {
-      client: {
-        type: String,
-      },
-      projectYear: {
-        type: String,
-      },
-      location: {
-        type: String,
-      },
-      designer: {
-        type: String,
-      },
+    client: {
+      type: String,
     },
+    projectYear: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    designer: {
+      type: String,
+    },
+
     reviewId: {
       type: String,
       ref: "Review",

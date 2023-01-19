@@ -16,7 +16,7 @@ const {
 const router = require("express").Router();
 
 router.post("/create", verifyToken, createReview);
-router.put("/update", verifyTokenAndAuthorization, updateReview);
+router.put("/update", verifyTokenAndAdmin, updateReview);
 router.delete("/delete", verifyTokenAndAdmin, deleteReview);
 router.get("/get-by-userId", verifyTokenAndAuthorization, getReviewByUserId);
 router.get("/find", verifyTokenAndAdmin, getReviewById);

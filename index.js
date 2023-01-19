@@ -13,7 +13,7 @@ const projectRoute = require("./routes/projectRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 // const orderRoute = require("./routes/orderRoute");
-
+const categoryRoute = require("./routes/CategoryRoute");
 const reviewRoute = require("./routes/reviewRoute");
 
 mongoose
@@ -31,7 +31,7 @@ app.use("/api/project", projectRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 // app.use("/api/order", orderRoute);
-
+app.use("/api/category", categoryRoute);
 app.use("/api/review", reviewRoute);
 
 app.get("/", (req, res) => {
