@@ -30,6 +30,25 @@ const updateOrder = async (req, res) => {
   }
 };
 
+const updateOrderStatus = async (req, res) => {
+  if (!req.query._id && !req.query.status)
+    res.status(500).json({ msg: "provide an order _id or provide status" });
+  try {
+    const updatedOrder = await Order.findByIdAndUpdate(
+      req.query._id,
+      {
+        status: req.query.status,
+      },
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(updatedOrder);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 //DELETE
 const deleteOrder = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide a _id" });
@@ -68,8 +87,6 @@ const getAllOrders = async (req, res) => {
     let forders;
 
     forders = await Order.find()
-      .populate("productId")
-      .populate("userId")
       .sort({ createdAt: -1 })
       .skip(qpage * qlimit)
       .limit(qlimit);
@@ -90,7 +107,7 @@ const getOrderStats = async (req, res) => {
     const income = await Order.aggregate([
       { $match: { createdAt: { $gte: previousMonth } } },
       {
-        $project: {
+        $order: {
           month: { $month: "$createdAt" },
           sales: "$amount",
         },
@@ -112,6 +129,7 @@ const getOrderStats = async (req, res) => {
 module.exports = {
   createOrder,
   updateOrder,
+  updateOrderStatus,
   deleteOrder,
   getOrderByUserId,
   getAllOrders,

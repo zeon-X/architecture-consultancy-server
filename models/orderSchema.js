@@ -8,18 +8,19 @@ const OrderSchema = new mongoose.Schema(
     },
     serviceCategory: {
       type: String,
-      required: true,
     },
-
     budget: {
       type: Number,
-      required: true,
     },
     buyerName: {
       type: String,
       required: true,
     },
-    phone: {
+    clientMessage: {
+      type: String,
+    },
+
+    whatsappPhone: {
       type: String,
       reuired: true,
     },
@@ -32,7 +33,7 @@ const OrderSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["pending", "accepted", "processing", "delivered"],
+      enum: ["pending", "rejected", "accepted", "processing", "completed"],
       default: "pending",
     },
     reviewStatus: {
