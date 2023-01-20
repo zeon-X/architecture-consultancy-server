@@ -30,6 +30,25 @@ const updateReview = async (req, res) => {
   }
 };
 
+const updateReviewStatus = async (req, res) => {
+  if (!req.query._id && !req.query.status)
+    res.status(500).json({ msg: "provide an review _id or provide status" });
+  try {
+    const updatedReview = await Review.findByIdAndUpdate(
+      req?.query?._id,
+      {
+        status: req?.query?.status,
+      },
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(updatedReview);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 //DELETE
 const deleteReview = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide an Review _id" });
@@ -49,7 +68,6 @@ const getAllReviews = async (req, res) => {
     let review;
 
     review = await Review.find()
-      .populate("userId")
       .sort({ createdAt: -1 })
       .skip(qpage * qlimit)
       .limit(qlimit);
@@ -60,7 +78,25 @@ const getAllReviews = async (req, res) => {
   }
 };
 
-//get Review
+const getAllActiveReviews = async (req, res) => {
+  const qpage = req.query.page || 0;
+  const qlimit = req.query.limit || 30;
+  // console.log(qlimit);
+  try {
+    let freview;
+
+    freview = await Review.find({ status: "accepted" })
+      .sort({ createdAt: -1 })
+      .skip(qpage * qlimit)
+      .limit(qlimit);
+
+    res.status(200).json(freview);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+//get Review by id
 const getReviewById = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide an Review _id" });
   try {
@@ -71,7 +107,7 @@ const getReviewById = async (req, res) => {
   }
 };
 
-//get Review
+//get Review by user id
 const getReviewByUserId = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide an user _id" });
   try {
@@ -83,25 +119,13 @@ const getReviewByUserId = async (req, res) => {
   }
 };
 
-//get Review email
-const getReviewByEmail = async (req, res) => {
-  if (!req.query.email) res.status(500).json({ msg: "provide an user email" });
-  try {
-    let review = await Review.find({ email: req.query.email });
-    // console.log(review);
-    res.status(200).json(review);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
 module.exports = {
   createReview,
   updateReview,
+  updateReviewStatus,
   deleteReview,
   getAllReviews,
   getReviewById,
-
+  getAllActiveReviews,
   getReviewByUserId,
-  getReviewByEmail,
 };

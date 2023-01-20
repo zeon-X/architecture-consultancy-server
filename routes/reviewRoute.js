@@ -6,7 +6,8 @@ const {
   getAllReviews,
   getReviewById,
   getReviewByUserId,
-  getReviewByEmail,
+  updateReviewStatus,
+  getAllActiveReviews,
 } = require("../controllers/reviewController");
 const {
   verifyTokenAndAuthorization,
@@ -15,13 +16,13 @@ const {
 } = require("../middlewires/verifyToken");
 const router = require("express").Router();
 
-router.post("/create", verifyToken, createReview);
+router.post("/create", createReview);
 router.put("/update", verifyTokenAndAdmin, updateReview);
+router.put("/update-status", verifyTokenAndAdmin, updateReviewStatus);
 router.delete("/delete", verifyTokenAndAdmin, deleteReview);
 router.get("/get-by-userId", verifyTokenAndAuthorization, getReviewByUserId);
 router.get("/find", verifyTokenAndAdmin, getReviewById);
-
-router.get("/find-by-email", verifyTokenAndAdmin, getReviewByEmail);
 router.get("/get", getAllReviews);
+router.get("/get-active", getAllActiveReviews);
 
 module.exports = router;

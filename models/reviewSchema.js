@@ -5,20 +5,16 @@ const ReviewSchema = new mongoose.Schema(
     reviewTitle: {
       type: String,
     },
-    review: {
+    reviewDiscription: {
       type: String,
     },
-    userId: {
-      type: String,
-      ref: "User",
-    },
-    img: {
+    clientImg: {
       type: String,
     },
-    name: {
+    clientName: {
       type: String,
     },
-    designation: {
+    clientDesignation: {
       type: String,
     },
     status: {
