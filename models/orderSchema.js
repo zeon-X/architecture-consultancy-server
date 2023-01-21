@@ -44,6 +44,10 @@ const OrderSchema = new mongoose.Schema(
     reviewId: {
       type: String,
       ref: "Review",
+      default: "",
+    },
+    specialMessage: {
+      type: String,
     },
   },
   { timestamps: true }

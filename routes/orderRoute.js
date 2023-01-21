@@ -3,7 +3,6 @@ const {
   updateOrder,
   deleteOrder,
   getOrderByUserId,
-  getOrderStats,
   getAllOrders,
   updateOrderStatus,
 } = require("../controllers/orderController");
@@ -24,7 +23,6 @@ router.put("/update-status", verifyTokenAndAdmin, updateOrderStatus);
 router.delete("/delete", verifyTokenAndAdmin, deleteOrder);
 
 router.get("/find", verifyTokenAndAuthorization, getOrderByUserId);
-router.get("/get", getAllOrders);
-router.get("/stats", verifyTokenAndAdmin, getOrderStats);
+router.get("/get", verifyTokenAndAdmin, getAllOrders);
 
 module.exports = router;
