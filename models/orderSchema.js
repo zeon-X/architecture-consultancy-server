@@ -5,30 +5,36 @@ const OrderSchema = new mongoose.Schema(
     userId: {
       ref: "User",
       type: String,
+      default: "",
     },
     serviceCategory: {
       type: String,
+      default: "",
     },
     budget: {
       type: Number,
+      default: "",
     },
     buyerName: {
       type: String,
-      required: true,
+      default: "",
     },
     clientMessage: {
       type: String,
+      default: "",
     },
 
     whatsappPhone: {
       type: String,
-      reuired: true,
+      default: "",
     },
     address: {
       type: Object,
+      default: "",
     },
     email: {
       type: Object,
+      default: "",
     },
 
     status: {
@@ -48,6 +54,7 @@ const OrderSchema = new mongoose.Schema(
     },
     specialMessage: {
       type: String,
+      default: "",
     },
   },
   { timestamps: true }

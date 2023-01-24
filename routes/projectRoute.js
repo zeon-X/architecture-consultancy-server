@@ -14,7 +14,7 @@ const {
 } = require("../middlewires/verifyToken");
 const router = require("express").Router();
 
-router.post("/create", verifyTokenAndAdmin, createProject);
+router.post("/create", createProject);
 router.put("/update", verifyTokenAndAdmin, updateProject);
 router.put("/update-status", verifyTokenAndAdmin, updateProjectStatus);
 router.delete("/delete", verifyTokenAndAdmin, deleteProject);

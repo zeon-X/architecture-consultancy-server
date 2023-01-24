@@ -4,18 +4,23 @@ const ReviewSchema = new mongoose.Schema(
   {
     reviewTitle: {
       type: String,
+      default: "",
     },
     reviewDiscription: {
       type: String,
+      default: "",
     },
     clientImg: {
       type: String,
+      default: "",
     },
     clientName: {
       type: String,
+      default: "",
     },
     clientDesignation: {
       type: String,
+      default: "",
     },
     status: {
       type: String,

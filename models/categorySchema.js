@@ -4,9 +4,11 @@ const CategorySchema = new mongoose.Schema(
   {
     categoryTitle: {
       type: String,
+      default: "",
     },
     categoryCode: {
       type: String,
+      default: "",
     },
   },
   {

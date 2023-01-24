@@ -4,29 +4,36 @@ const ProjectSchema = new mongoose.Schema(
   {
     title: {
       type: String,
+      default: "",
     },
     img: {
       type: String,
+      default: "",
     },
     pic: {
       type: String,
+      default: "",
     },
     galleryBefore: {
       type: Array,
+      default: [],
     },
     galleryAfter: {
       type: Array,
+      default: [],
     },
     aboutLeft: {
       type: String,
+      default: "",
     },
     aboutRight: {
       type: String,
+      default: "",
     },
     category: {
       ref: "Category",
       type: String,
-      required: true,
+      default: "",
     },
     status: {
       type: String,
@@ -35,20 +42,25 @@ const ProjectSchema = new mongoose.Schema(
     },
     client: {
       type: String,
+      default: "",
     },
     projectYear: {
       type: String,
+      default: "",
     },
     location: {
       type: String,
+      default: "",
     },
     designer: {
       type: String,
+      default: "",
     },
 
     reviewId: {
       type: String,
       ref: "Review",
+      default: "",
     },
   },
   { timestamps: true }

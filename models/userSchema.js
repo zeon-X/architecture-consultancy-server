@@ -4,11 +4,11 @@ const UserSchema = new mongoose.Schema(
   {
     email: {
       type: String,
-      required: true,
       unique: true,
     },
     name: {
       type: String,
+      default: "",
     },
     userId: {
       type: String,
@@ -17,9 +17,11 @@ const UserSchema = new mongoose.Schema(
     },
     profilePic: {
       type: String,
+      default: "",
     },
     phone: {
       type: String,
+      default: "",
     },
     role: {
       type: String,
@@ -28,6 +30,7 @@ const UserSchema = new mongoose.Schema(
     },
     address: {
       type: String,
+      default: "",
     },
   },
   { timestamps: true }

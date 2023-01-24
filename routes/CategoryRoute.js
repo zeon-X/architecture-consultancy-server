@@ -8,7 +8,7 @@ const {
 const { verifyTokenAndAdmin } = require("../middlewires/verifyToken");
 const router = require("express").Router();
 
-router.post("/create", verifyTokenAndAdmin, createCategory);
+router.post("/create", createCategory);
 router.put("/update", verifyTokenAndAdmin, updateCategory);
 router.delete("/delete", verifyTokenAndAdmin, deleteCategory);
 router.get("/find", getCategoryById);

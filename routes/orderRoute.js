@@ -23,6 +23,6 @@ router.put("/update-status", verifyTokenAndAdmin, updateOrderStatus);
 router.delete("/delete", verifyTokenAndAdmin, deleteOrder);
 
 router.get("/find", verifyTokenAndAuthorization, getOrderByUserId);
-router.get("/get", verifyTokenAndAdmin, getAllOrders);
+router.get("/get", getAllOrders);
 
 module.exports = router;
