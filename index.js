@@ -35,7 +35,7 @@ app.use("/api/category", categoryRoute);
 app.use("/api/review", reviewRoute);
 
 app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Welcome to archi-firm-server" });
+  res.status(200).json({ msg: "Welcome to imrans creation" });
 });
 
 app.listen(PORT, () => {
