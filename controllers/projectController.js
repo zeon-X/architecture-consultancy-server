@@ -99,6 +99,25 @@ const getAllActiveProjects = async (req, res) => {
   }
 };
 
+const getAllActiveProjectsByNameAndImage = async (req, res) => {
+  const qpage = req.query.page || 0;
+  const qlimit = req.query.limit || 30;
+  // console.log(qlimit);
+  try {
+    let fproject;
+
+    fproject = await Project.find({ status: "active" })
+      .select({ _id: 1, title: 1, img: 1 })
+      .sort({ createdAt: -1 })
+      .skip(qpage * qlimit)
+      .limit(qlimit);
+
+    res.status(200).json(fproject);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 //get project
 const getProjectById = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide an project _id" });
@@ -117,5 +136,6 @@ module.exports = {
   deleteProject,
   getAllProjects,
   getAllActiveProjects,
+  getAllActiveProjectsByNameAndImage,
   getProjectById,
 };

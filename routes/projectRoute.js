@@ -6,6 +6,7 @@ const {
   getProjectById,
   getAllActiveProjects,
   updateProjectStatus,
+  getAllActiveProjectsByNameAndImage,
 } = require("../controllers/projectController");
 const {
   verifyTokenAndAuthorization,
@@ -21,5 +22,6 @@ router.delete("/delete", deleteProject);
 router.get("/find", getProjectById);
 router.get("/get", getAllProjects);
 router.get("/get-active", getAllActiveProjects);
+router.get("/get-active-by-basic", getAllActiveProjectsByNameAndImage);
 
 module.exports = router;
