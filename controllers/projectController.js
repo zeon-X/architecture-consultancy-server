@@ -60,7 +60,7 @@ const deleteProject = async (req, res) => {
   }
 };
 
-//Project All
+//Get Project All
 const getAllProjects = async (req, res) => {
   const qpage = req.query.page || 0;
   const qlimit = req.query.limit || 30;
@@ -100,9 +100,8 @@ const getAllActiveProjects = async (req, res) => {
 };
 
 const getAllActiveProjectsByNameAndImage = async (req, res) => {
-  const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
-  // console.log(qlimit);
+  const qpage = parseInt(req.query.page) || 0;
+  const qlimit = parseInt(req.query.limit) || 30;
   try {
     let fproject;
 
@@ -118,11 +117,52 @@ const getAllActiveProjectsByNameAndImage = async (req, res) => {
   }
 };
 
-//get project
+//find project
 const getProjectById = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide an project _id" });
   try {
     let fproject = await Project.findById(req.query._id);
+    res.status(200).json(fproject);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+const getProjectByCategory = async (req, res) => {
+  const qpage = req.query.page || 0;
+  const qlimit = req.query.limit || 30;
+  console.log(req.query);
+  if (!req.query._catId)
+    res.status(500).json({ msg: "provide an category _id" });
+  try {
+    let fproject = await Project.find({
+      category: req?.query?._catId,
+      status: "active",
+    })
+      .sort({ createdAt: -1 })
+      .skip(qpage * qlimit)
+      .limit(qlimit);
+    res.status(200).json(fproject);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+const getProjectByCategoryBasic = async (req, res) => {
+  const qpage = req.query.page || 0;
+  const qlimit = req.query.limit || 30;
+  // console.log(req.query);
+  if (!req.query._catId)
+    res.status(500).json({ msg: "provide an category _id" });
+
+  try {
+    let fproject = await Project.find({
+      category: req?.query?._catId,
+      status: "active",
+    })
+      .select({ _id: 1, title: 1, img: 1 })
+      .sort({ createdAt: -1 })
+      .skip(qpage * qlimit)
+      .limit(qlimit);
+
     res.status(200).json(fproject);
   } catch (err) {
     res.status(500).json(err);
@@ -138,4 +178,6 @@ module.exports = {
   getAllActiveProjects,
   getAllActiveProjectsByNameAndImage,
   getProjectById,
+  getProjectByCategory,
+  getProjectByCategoryBasic,
 };
