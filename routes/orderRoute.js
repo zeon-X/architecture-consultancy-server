@@ -18,7 +18,7 @@ const router = require("express").Router();
 router.post("/create", createOrder);
 
 router.put("/update", verifyTokenAndAuthorization, updateOrder);
-router.put("/update-status", verifyTokenAndAdmin, updateOrderStatus);
+router.put("/update-status", updateOrderStatus);
 
 router.delete("/delete", verifyTokenAndAdmin, deleteOrder);
 
