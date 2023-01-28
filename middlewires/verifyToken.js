@@ -11,7 +11,7 @@ const verifyToken = (req, res, next) => {
       if (err) res.status(403).json({ msg: "Token invalid", error: err });
       else {
         // console.log(user);
-        req.user = user?.userInfo;
+        req.user = user?.userData;
         next();
       }
     });
@@ -22,7 +22,7 @@ const verifyToken = (req, res, next) => {
 
 //MIDDLE WIRE INSIDE MIDDLEWIRE || Authorization
 const verifyTokenAndAdmin = (req, res, next) => {
-  // console.log(req || "not found");
+  // console.log(req.user || "not found");
   verifyToken(req, res, () => {
     if (req.user.role === "admin") next();
     else res.status(403).json("Opps...! you don't have access");
