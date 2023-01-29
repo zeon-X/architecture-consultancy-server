@@ -13,8 +13,10 @@ const projectRoute = require("./routes/projectRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 const orderRoute = require("./routes/orderRoute");
-const categoryRoute = require("./routes/CategoryRoute");
+const categoryRoute = require("./routes/categoryRoute");
 const reviewRoute = require("./routes/reviewRoute");
+const blogRoute = require("./routes/blogRoute");
+const commentRoute = require("./routes/commentRoute");
 
 mongoose
   .connect(
@@ -33,6 +35,8 @@ app.use("/api/user", userRoute);
 app.use("/api/order", orderRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/review", reviewRoute);
+app.use("/api/blog", blogRoute);
+app.use("/api/comment", commentRoute);
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Welcome to imrans creation" });
