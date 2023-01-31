@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ProjectSchema = new mongoose.Schema(
+const projectSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -66,4 +66,4 @@ const ProjectSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Project", ProjectSchema);
+module.exports = mongoose.model("Project", projectSchema);
