@@ -9,6 +9,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
+// ROUTERS
 const projectRoute = require("./routes/projectRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
@@ -18,6 +19,7 @@ const reviewRoute = require("./routes/reviewRoute");
 const blogRoute = require("./routes/blogRoute");
 const commentRoute = require("./routes/commentRoute");
 
+// DB CONNECT
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@cluster0.wtm5era.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
@@ -29,6 +31,7 @@ mongoose
     console.log(err);
   });
 
+// APIS
 app.use("/api/project", projectRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
