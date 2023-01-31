@@ -44,7 +44,7 @@ const deleteCategory = async (req, res) => {
 //Category All
 const getAllCategorys = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
+  const qlimit = req.query.limit || 50;
   // console.log(qlimit);
   try {
     let fCategory;

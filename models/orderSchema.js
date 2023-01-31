@@ -11,11 +11,12 @@ const OrderSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    budget: {
-      type: Number,
+
+    clientBudget: {
+      type: String,
       default: "",
     },
-    buyerName: {
+    clientName: {
       type: String,
       default: "",
     },
@@ -23,17 +24,47 @@ const OrderSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-
-    whatsappPhone: {
+    clientOtherComLink: {
       type: String,
       default: "",
     },
-    address: {
-      type: Object,
+    clientWhatsappNum: {
+      type: String,
       default: "",
     },
-    email: {
-      type: Object,
+    clientAddress: {
+      type: String,
+      default: "",
+    },
+    clientEmail: {
+      type: String,
+      default: "",
+    },
+
+    planing: {
+      type: Array,
+      default: [],
+    },
+    houseAddress: {
+      type: String,
+      default: "",
+    },
+    existingPlaceImages: {
+      type: Array,
+      default: [],
+    },
+    inspirationImages: {
+      type: Array,
+      default: [],
+    },
+
+    otherFiles: {
+      type: Array,
+      default: [],
+    },
+
+    projectDiscription: {
+      type: String,
       default: "",
     },
 

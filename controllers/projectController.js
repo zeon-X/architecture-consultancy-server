@@ -63,7 +63,7 @@ const deleteProject = async (req, res) => {
 //Get Project All
 const getAllProjects = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
+  const qlimit = req.query.limit || 50;
   // console.log(qlimit);
   try {
     let fproject;
@@ -82,7 +82,7 @@ const getAllProjects = async (req, res) => {
 
 const getAllActiveProjects = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
+  const qlimit = req.query.limit || 50;
   // console.log(qlimit);
   try {
     let fproject;
@@ -129,7 +129,7 @@ const getProjectById = async (req, res) => {
 };
 const getProjectByCategory = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
+  const qlimit = req.query.limit || 50;
   console.log(req.query);
   if (!req.query._catId)
     res.status(500).json({ msg: "provide an category _id" });
@@ -148,7 +148,7 @@ const getProjectByCategory = async (req, res) => {
 };
 const getProjectByCategoryBasic = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
+  const qlimit = req.query.limit || 50;
   // console.log(req.query);
   if (!req.query._catId)
     res.status(500).json({ msg: "provide an category _id" });

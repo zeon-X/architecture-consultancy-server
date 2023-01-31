@@ -82,7 +82,7 @@ const getOrderByUserId = async (req, res) => {
 //Order All
 const getAllOrders = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 30;
+  const qlimit = req.query.limit || 50;
   try {
     let forders;
 
