@@ -7,7 +7,7 @@ const uploadFile = function (req, res) {
   if (!req.files) {
     return res.status(400).send({ msg: "bad request" });
   }
-  if (!req.files.file) {
+  if (req.files.file == undefined) {
     //IMAGE
     fs.writeFile(DESTIMAGE + req.files.image.name, req.files.image.data, () => {
       const url = req.protocol + "://" + req.get("host");
