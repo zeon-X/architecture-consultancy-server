@@ -80,6 +80,24 @@ const getAllProjects = async (req, res) => {
   }
 };
 
+const getHeroProjects = async (req, res) => {
+  const qpage = req.query.page || 0;
+  const qlimit = req.query.limit || 5;
+  // console.log(qlimit);
+  try {
+    let fproject;
+
+    fproject = await Project.find({ status: "active" })
+      .populate("category")
+      .skip(qpage * qlimit)
+      .limit(qlimit);
+
+    res.status(200).json(fproject);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 const getAllActiveProjects = async (req, res) => {
   const qpage = req.query.page || 0;
   const qlimit = req.query.limit || 50;
@@ -175,6 +193,7 @@ module.exports = {
   updateProjectStatus,
   deleteProject,
   getAllProjects,
+  getHeroProjects,
   getAllActiveProjects,
   getAllActiveProjectsByNameAndImage,
   getProjectById,

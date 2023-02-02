@@ -9,6 +9,7 @@ const {
   getAllActiveProjectsByNameAndImage,
   getProjectByCategory,
   getProjectByCategoryBasic,
+  getHeroProjects,
 } = require("../controllers/projectController");
 const {
   verifyTokenAndAuthorization,
@@ -26,6 +27,7 @@ router.get("/find-by-cat", getProjectByCategory);
 router.get("/find-by-cat-basic", getProjectByCategoryBasic);
 router.get("/get", verifyTokenAndAdmin, getAllProjects);
 router.get("/get-active", getAllActiveProjects);
+router.get("/get-hero-projects", getHeroProjects);
 router.get("/get-active-by-basic", getAllActiveProjectsByNameAndImage);
 
 module.exports = router;
