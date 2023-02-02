@@ -16,7 +16,7 @@ const uploadFile = function (req, res) {
 };
 
 // ROUTER -> upload file -> then CONTROLLER
-
-router.post("/upload", uploadFile);
+const { verifyToken } = require("../middlewires/verifyToken");
+router.post("/upload", verifyToken, uploadFile);
 
 module.exports = router;
