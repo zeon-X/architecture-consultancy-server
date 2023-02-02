@@ -8,6 +8,8 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
+app.use("/public/data/file/", express.static("public"));
+app.use("/public/data/image/", express.static("public"));
 
 const PORT = process.env.PORT || 5000;
 
@@ -44,6 +46,7 @@ app.use("/api/category", categoryRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/comment", commentRoute);
+// image or file save
 
 app.use("/api/file", fileHandleRoute);
 
