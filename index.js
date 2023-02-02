@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 const app = express();
 
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
+app.use(fileUpload());
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,6 +20,8 @@ const categoryRoute = require("./routes/categoryRoute");
 const reviewRoute = require("./routes/reviewRoute");
 const blogRoute = require("./routes/blogRoute");
 const commentRoute = require("./routes/commentRoute");
+//file or img save
+const fileHandleRoute = require("./fileHandlers/fileHandle");
 
 // DB CONNECT
 mongoose
@@ -40,6 +44,8 @@ app.use("/api/category", categoryRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/comment", commentRoute);
+
+app.use("/api/file", fileHandleRoute);
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Welcome to imrans creation" });
