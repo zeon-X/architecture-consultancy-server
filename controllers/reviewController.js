@@ -63,7 +63,7 @@ const deleteReview = async (req, res) => {
 //Review All
 const getAllReviews = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 1000;
   try {
     let review;
 
@@ -80,7 +80,7 @@ const getAllReviews = async (req, res) => {
 
 const getAllActiveReviews = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 1000;
   // console.log(qlimit);
   try {
     let freview;

@@ -65,7 +65,7 @@ const deleteUser = async (req, res) => {
 //User All
 const getAllUsers = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 500;
   try {
     let users;
 

@@ -63,7 +63,7 @@ const deleteProject = async (req, res) => {
 //Get Project All
 const getAllProjects = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 500;
   // console.log(qlimit);
   try {
     let fproject;
@@ -100,7 +100,7 @@ const getHeroProjects = async (req, res) => {
 
 const getAllActiveProjects = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 500;
   // console.log(qlimit);
   try {
     let fproject;
@@ -119,12 +119,12 @@ const getAllActiveProjects = async (req, res) => {
 
 const getAllActiveProjectsByNameAndImage = async (req, res) => {
   const qpage = parseInt(req.query.page) || 0;
-  const qlimit = parseInt(req.query.limit) || 30;
+  const qlimit = parseInt(req.query.limit) || 500;
   try {
     let fproject;
 
     fproject = await Project.find({ status: "active" })
-      .select({ _id: 1, title: 1, img: 1 })
+      .select({ _id: 1, title: 1, img: 1, location: 1, aboutLeft: 1 })
       .sort({ createdAt: -1 })
       .skip(qpage * qlimit)
       .limit(qlimit);
@@ -147,7 +147,7 @@ const getProjectById = async (req, res) => {
 };
 const getProjectByCategory = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 500;
   console.log(req.query);
   if (!req.query._catId)
     res.status(500).json({ msg: "provide an category _id" });
@@ -166,7 +166,7 @@ const getProjectByCategory = async (req, res) => {
 };
 const getProjectByCategoryBasic = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 50;
+  const qlimit = req.query.limit || 500;
   // console.log(req.query);
   if (!req.query._catId)
     res.status(500).json({ msg: "provide an category _id" });
