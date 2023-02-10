@@ -5,6 +5,7 @@ const {
   getOrderByUserId,
   getAllOrders,
   updateOrderStatus,
+  getOrderById,
 } = require("../controllers/orderController");
 
 const {
@@ -22,7 +23,8 @@ router.put("/update-status", verifyTokenAndAdmin, updateOrderStatus);
 
 router.delete("/delete", verifyTokenAndAdmin, deleteOrder);
 
-router.get("/find", verifyTokenAndAuthorization, getOrderByUserId);
+router.get("/find", verifyTokenAndAuthorization, getOrderById);
+router.get("/find-by-user", verifyTokenAndAuthorization, getOrderByUserId);
 router.get("/get", verifyTokenAndAdmin, getAllOrders);
 
 module.exports = router;

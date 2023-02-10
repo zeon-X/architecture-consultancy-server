@@ -65,9 +65,7 @@ const getOrderByUserId = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide a user _id" });
 
   try {
-    const forders = await Order.find({ userId: req.query._id }).populate(
-      "productId"
-    );
+    const forders = await Order.find({ userId: req.query._id });
     // console.log(forders);
     res.status(200).json(forders);
   } catch (err) {
@@ -75,14 +73,27 @@ const getOrderByUserId = async (req, res) => {
   }
 };
 
-// populate(
-//   "products.productId"
-// );
+//GET BY ID // it will take order id
+const getOrderById = async (req, res) => {
+  if (!req.query._id) res.status(500).json({ msg: "provide an order _id" });
+
+  try {
+    let forders = await Order.findById(req.query._id);
+    // console.log(forders);
+    if (forders.reviewId !== "") {
+      forders = await Order.findById(req.query._id).populate("reviewId");
+    }
+    // console.log(forders);
+    res.status(200).json(forders);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+};
 
 //Order All
 const getAllOrders = async (req, res) => {
   const qpage = req.query.page || 0;
-  const qlimit = req.query.limit || 500;
+  const qlimit = req.query.limit || 5000;
   try {
     let forders;
 
@@ -103,5 +114,6 @@ module.exports = {
   updateOrderStatus,
   deleteOrder,
   getOrderByUserId,
+  getOrderById,
   getAllOrders,
 };

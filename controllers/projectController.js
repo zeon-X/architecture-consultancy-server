@@ -140,6 +140,10 @@ const getProjectById = async (req, res) => {
   if (!req.query._id) res.status(500).json({ msg: "provide an project _id" });
   try {
     let fproject = await Project.findById(req.query._id);
+    if (fproject.reviewId !== "") {
+      fproject = await Project.findById(req.query._id).populate("reviewId");
+    }
+    // console.log(fproject);
     res.status(200).json(fproject);
   } catch (err) {
     res.status(500).json(err);
@@ -176,7 +180,7 @@ const getProjectByCategoryBasic = async (req, res) => {
       category: req?.query?._catId,
       status: "active",
     })
-      .select({ _id: 1, title: 1, img: 1 })
+      .select({ _id: 1, title: 1, img: 1, location: 1, aboutLeft: 1 })
       .sort({ createdAt: -1 })
       .skip(qpage * qlimit)
       .limit(qlimit);
