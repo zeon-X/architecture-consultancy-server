@@ -20,6 +20,7 @@ const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 const orderRoute = require("./routes/orderRoute");
 const categoryRoute = require("./routes/categoryRoute");
+const ServiceCategoryRoute = require("./routes/serviceCategoryRoute");
 const reviewRoute = require("./routes/reviewRoute");
 const blogRoute = require("./routes/blogRoute");
 const commentRoute = require("./routes/commentRoute");
@@ -44,6 +45,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/order", orderRoute);
 app.use("/api/category", categoryRoute);
+app.use("/api/service-category", ServiceCategoryRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/comment", commentRoute);
@@ -58,4 +60,6 @@ app.get("/test", (req, res) => {
   res.status(200).json({ msg: "Running imrans creation server.." });
 });
 
-app.listen();
+app.listen(PORT, () => {
+  console.log("Server is running on port.." + PORT);
+});
