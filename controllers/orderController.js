@@ -79,14 +79,13 @@ const getOrderById = async (req, res) => {
 
   try {
     let forders = await Order.findById(req.query._id);
-    // console.log(forders);
     if (forders.reviewId !== "") {
       forders = await Order.findById(req.query._id).populate("reviewId");
     }
     // console.log(forders);
     res.status(200).json(forders);
   } catch (err) {
-    res.status(400).json({ error: err });
+    res.status(500).json({ error: err });
   }
 };
 

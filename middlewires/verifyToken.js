@@ -34,12 +34,6 @@ const verifyTokenAndAuthorization = (req, res, next) => {
     // console.log(req.user.email);
     // console.log(req.query.email);
 
-    //TO UPDATE FROM USER SIDE orderid as _id & user _id as userId should be provided
-
-    // console.log(req.user);
-    // console.log("QUERY");
-    // console.log(req.query);
-
     if (
       req?.user?._id === req?.query?.userId ||
       req?.user?._id === req?.query?._id ||

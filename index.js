@@ -54,7 +54,8 @@ app.use("/api/file", fileHandleRoute);
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "Welcome to imrans creation" });
 });
-
-app.listen(PORT, () => {
-  console.log("Server is running on port.." + PORT);
+app.get("/test", (req, res) => {
+  res.status(200).json({ msg: "Running imrans creation server.." });
 });
+
+app.listen();
