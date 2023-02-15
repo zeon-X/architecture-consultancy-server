@@ -24,6 +24,7 @@ const ServiceCategoryRoute = require("./routes/serviceCategoryRoute");
 const reviewRoute = require("./routes/reviewRoute");
 const blogRoute = require("./routes/blogRoute");
 const commentRoute = require("./routes/commentRoute");
+const articleRoute = require("./routes/articleRoute");
 //file or img save
 const fileHandleRoute = require("./fileHandlers/fileHandle");
 
@@ -49,6 +50,7 @@ app.use("/api/service-category", ServiceCategoryRoute);
 app.use("/api/review", reviewRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/comment", commentRoute);
+app.use("/api/article", articleRoute);
 // image or file save
 
 app.use("/api/file", fileHandleRoute);
