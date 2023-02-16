@@ -1,4 +1,4 @@
-const ServiceCategory = require("../models/ServiceCategorySchema");
+const ServiceCategory = require("../models/serviceCategorySchema");
 
 //CREATE
 const createServiceCategory = async (req, res) => {
