@@ -25,6 +25,7 @@ const reviewRoute = require("./routes/reviewRoute");
 const blogRoute = require("./routes/blogRoute");
 const commentRoute = require("./routes/commentRoute");
 const articleRoute = require("./routes/articleRoute");
+const clientPageComponentRoute = require("./routes/clientPageComponentRoute");
 //file or img save
 const fileHandleRoute = require("./fileHandlers/fileHandle");
 
@@ -51,6 +52,7 @@ app.use("/api/review", reviewRoute);
 app.use("/api/blog", blogRoute);
 app.use("/api/comment", commentRoute);
 app.use("/api/article", articleRoute);
+app.use("/api/cpc", clientPageComponentRoute);
 // image or file save
 
 app.use("/api/file", fileHandleRoute);
