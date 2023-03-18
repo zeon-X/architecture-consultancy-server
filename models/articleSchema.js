@@ -6,14 +6,24 @@ const articleSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-
+    slug: {
+      type: String,
+    },
     articlePara: [
       {
         img: {
           type: String,
           default: "",
         },
+        imgTags: {
+          type: String,
+          default: "",
+        },
         paragraph: {
+          type: String,
+          default: "",
+        },
+        paragraphFull: {
           type: String,
           default: "",
         },

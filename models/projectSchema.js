@@ -6,6 +6,7 @@ const projectSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+
     img: {
       type: String,
       default: "",

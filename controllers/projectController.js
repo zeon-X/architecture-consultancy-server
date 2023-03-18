@@ -131,6 +131,7 @@ const getAllActiveProjectsByNameAndImage = async (req, res) => {
         location: 1,
         aboutLeft: 1,
         category: 1,
+        galleryAfter: 1,
       })
       .populate("category")
       .sort({ createdAt: -1 })
@@ -199,6 +200,7 @@ const getProjectByCategoryBasic = async (req, res) => {
         location: 1,
         aboutLeft: 1,
         category: 1,
+        galleryAfter: 1,
       })
       .populate("category")
       .sort({ createdAt: -1 })
@@ -206,6 +208,18 @@ const getProjectByCategoryBasic = async (req, res) => {
       .limit(qlimit);
 
     res.status(200).json(fproject);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+const getProjectBySlug = async (req, res) => {
+  if (!req?.query?.slug)
+    res.status(500).json({ msg: "provide an Project slug" });
+  try {
+    let fProject = await Project.find({ pic: req?.query?.slug });
+    // we using pic field as slug
+    res.status(200).json(fProject);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -223,4 +237,5 @@ module.exports = {
   getProjectById,
   getProjectByCategory,
   getProjectByCategoryBasic,
+  getProjectBySlug,
 };

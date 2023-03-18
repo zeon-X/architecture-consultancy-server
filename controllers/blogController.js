@@ -70,6 +70,16 @@ const getBlogById = async (req, res) => {
     res.status(500).json(err);
   }
 };
+//get blog by slug
+const getBlogBySlug = async (req, res) => {
+  if (!req?.query?.slug) res.status(500).json({ msg: "provide an Blog slug" });
+  try {
+    let fBlog = await Blog.find({ slug: req?.query?.slug });
+    res.status(200).json(fBlog);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 module.exports = {
   createBlog,
@@ -77,4 +87,5 @@ module.exports = {
   deleteBlog,
   getAllBlogs,
   getBlogById,
+  getBlogBySlug,
 };

@@ -10,6 +10,7 @@ const {
   getProjectByCategory,
   getProjectByCategoryBasic,
   getHeroProjects,
+  getProjectBySlug,
 } = require("../controllers/projectController");
 const {
   verifyTokenAndAuthorization,
@@ -23,6 +24,7 @@ router.put("/update", verifyTokenAndAdmin, updateProject);
 router.put("/update-status", verifyTokenAndAdmin, updateProjectStatus);
 router.delete("/delete", verifyTokenAndAdmin, deleteProject);
 router.get("/find", getProjectById);
+router.get("/find-by-slug", getProjectBySlug);
 router.get("/find-by-cat", getProjectByCategory);
 router.get("/find-by-cat-basic", getProjectByCategoryBasic);
 router.get("/get", verifyTokenAndAdmin, getAllProjects);

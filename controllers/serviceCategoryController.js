@@ -68,7 +68,7 @@ const getAllParentServiceCategorys = async (req, res) => {
 
     fServiceCategory = await ServiceCategory.find({
       categoryType: "parent",
-    }).sort({ createdAt: -1 });
+    });
 
     res.status(200).json(fServiceCategory);
   } catch (err) {

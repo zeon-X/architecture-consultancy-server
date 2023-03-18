@@ -71,10 +71,23 @@ const getArticleById = async (req, res) => {
   }
 };
 
+//get Article
+const getArticleBySlug = async (req, res) => {
+  if (!req?.query?.slug)
+    res.status(500).json({ msg: "provide an Article slug" });
+  try {
+    let fArticle = await Article.find({ slug: req?.query?.slug });
+    res.status(200).json(fArticle);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   createArticle,
   updateArticle,
   deleteArticle,
   getAllArticles,
   getArticleById,
+  getArticleBySlug,
 };

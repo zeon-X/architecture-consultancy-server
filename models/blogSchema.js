@@ -6,6 +6,9 @@ const blogSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    slug: {
+      type: String,
+    },
 
     blogPara: [
       {
@@ -13,7 +16,15 @@ const blogSchema = new mongoose.Schema(
           type: String,
           default: "",
         },
+        imgTags: {
+          type: String,
+          default: "",
+        },
         paragraph: {
+          type: String,
+          default: "",
+        },
+        others: {
           type: String,
           default: "",
         },
