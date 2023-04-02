@@ -32,7 +32,7 @@ const projectSchema = new mongoose.Schema(
       default: "",
     },
     category: {
-      ref: "Category",
+      ref: "ServiceCategory",
       type: String,
       default: "",
     },

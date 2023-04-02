@@ -9,6 +9,10 @@ const articleSchema = new mongoose.Schema(
     slug: {
       type: String,
     },
+    categoryId: {
+      type: String,
+      default: "",
+    },
     articlePara: [
       {
         img: {

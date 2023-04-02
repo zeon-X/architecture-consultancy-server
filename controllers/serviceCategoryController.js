@@ -51,7 +51,7 @@ const getAllServiceCategorys = async (req, res) => {
   try {
     let fServiceCategory;
 
-    fServiceCategory = await ServiceCategory.find().sort({ createdAt: -1 });
+    fServiceCategory = await ServiceCategory.find().limit(qlimit).skip(qpage);
 
     res.status(200).json(fServiceCategory);
   } catch (err) {
